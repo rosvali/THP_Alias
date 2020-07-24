@@ -5,12 +5,12 @@ def mkdiruby
 	File.exist?(ARGV.first) ? abort("mkdiruby: Dir already exist") : Dir.mkdir(ARGV.first)
 	File.open("#{ARGV.first}/Gemfile", "w") { |f| f.write gemfiledata}
 	system("git init #{ARGV.first}")
-	File.open("#{ARGV.first}/.gitignore", "w") { |f| f.write ".env\n"}
+	File.open("#{ARGV.first}/.gitignore", "w") { |f| f.write ".env\nGemfile.lock"}
 	File.open("#{ARGV.first}/.env", "w")
 	Dir.mkdir("#{ARGV.first}/lib")
 	system("rspec --init")
 	system("mv spec/ #{ARGV.first}")
-	File.open("#{ARGV.first}/Readme.md", "w") { |f| f.write "###Ruby"}
+	File.open("#{ARGV.first}/README.md", "w") { |f| f.write "## Projet de The Hacking Project"}
 end
 
 mkdiruby
